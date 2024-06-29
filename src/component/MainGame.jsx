@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import RestartBtn from "./RestartBtn";
 
 export default function MainGame({ message, setMessage }) {
 	const [level, setLevel] = useState(2);
@@ -54,54 +55,56 @@ export default function MainGame({ message, setMessage }) {
 	}, [userArr]);
 
 	return (
-		<main className="grid grid-cols-2 gap-4 w-1/4">
+		<main className="grid grid-cols-2 gap-8 w-1/4">
 			<button
 				value={1}
-				className={`p-4 rounded-lg hover:shadow-md ${
-					message === "game over" ? "" : "active:bg-sky-500"
-				} ${num === 1 && isBlink ? "bg-red-200" : "bg-sky-200"}`}
+				className={`py-16 rounded-lg hover:shadow-md ${
+					message === "game over" ? "" : "active:bg-green-500"
+				} ${
+					num === 1 && isBlink
+						? "bg-green-100 shadow-[0_0_50px_5px_rgb(34,197,94)]"
+						: "bg-green-200"
+				}`}
 				disabled={message === "game over" ? true : false}
 				onClick={handleClick}
-			>
-				1
-			</button>
+			></button>
 			<button
 				value={2}
-				className={`p-4 rounded-lg hover:shadow-md ${
-					message === "game over" ? "" : "active:bg-sky-500"
-				} ${num === 2 && isBlink ? "bg-red-200" : "bg-sky-200"}`}
+				className={`py-16 rounded-lg hover:shadow-md ${
+					message === "game over" ? "" : "active:bg-red-500"
+				} ${
+					num === 2 && isBlink
+						? "bg-red-100 shadow-[0_0_50px_5px_rgb(239,68,68)]"
+						: "bg-red-200"
+				}`}
 				disabled={message === "game over" ? true : false}
 				onClick={handleClick}
-			>
-				2
-			</button>
+			></button>
 			<button
 				value={3}
-				className={`p-4 rounded-lg hover:shadow-md ${
-					message === "game over" ? "" : "active:bg-sky-500"
-				} ${num === 3 && isBlink ? "bg-red-200" : "bg-sky-200"}`}
+				className={`py-16 rounded-lg hover:shadow-md ${
+					message === "game over" ? "" : "active:bg-yellow-500"
+				} ${
+					num === 3 && isBlink
+						? "bg-yellow-100 shadow-[0_0_50px_5px_rgb(234,179,8)]"
+						: "bg-yellow-200"
+				}`}
 				disabled={message === "game over" ? true : false}
 				onClick={handleClick}
-			>
-				3
-			</button>
+			></button>
 			<button
 				value={4}
-				className={`p-4 rounded-lg hover:shadow-md ${
+				className={`py-16 rounded-lg ${
 					message === "game over" ? "" : "active:bg-sky-500"
-				} ${num === 4 && isBlink ? "bg-red-200" : "bg-sky-200"}`}
+				} ${
+					num === 4 && isBlink
+						? "bg-sky-100 shadow-[0_0_50px_5px_rgb(14,165,233)]"
+						: "bg-sky-200"
+				}`}
 				disabled={message === "game over" ? true : false}
 				onClick={handleClick}
-			>
-				4
-			</button>
-			{message === "game over" ? (
-				<button className="col-span-2 p-4 rounded-lg bg-red-200 w-1/2 mx-auto mt-4">
-					Restart
-				</button>
-			) : (
-				""
-			)}
+			></button>
+			<RestartBtn message={message} />
 		</main>
 	);
 }

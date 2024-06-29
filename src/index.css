@@ -4,6 +4,9 @@
 
 @layer base {
 	h1 {
-		@apply text-5xl font-semibold;
+		@apply text-5xl font-semibold text-white;
+	}
+	* {
+		@apply bg-sky-950;
 	}
 }
